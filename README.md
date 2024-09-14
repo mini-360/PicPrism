@@ -2,8 +2,8 @@
 
 **Video Number:**
 
-- In which day you're
-- Your good Name
+- In which day you're : DAY => 4/17
+- Your good Name : Aniket
 
 Welcome to **PicPrism**, a dynamic and feature-rich platform designed for bloggers and readers alike. Dive into a world where ideas meet execution, and where every post creates a vibe that resonates.
 
