@@ -7,20 +7,15 @@ import Signup from "./pages/Signup";
 import BuyerDashboard from "./pages/BuyerDashboard";
 import SellerDashboard from "./pages/SellerDashboard";
 import Footers from "./components/Footers";
+import GsapTransition from "./components/GsapTransition";
 
 const App = () => {
   return (
     <>
       <BrowserRouter>
         <Navbar />
-        <Routes>
-          <Route path="/" element={<Home />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/seller/profile" element={<SellerDashboard />} />
-          <Route path="/buyer/profile" element={<BuyerDashboard />} />
-        </Routes>
-        <Footers/>
+        <GsapTransition />
+        <Footers />
       </BrowserRouter>
     </>
   );

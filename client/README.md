@@ -2,10 +2,10 @@
 
 **Video Number:**
 
-- In which day you're
-- Your good Name
+- In which DAY you're : DAY => 4/17
+- Your good Name : Aniket
 
-Welcome to **PicPrism**, a dynamic and feature-rich platform designed for bloggers and readers alike. Dive into a world where ideas meet execution, and where every post creates a vibe that resonates.
+Welcome to **PicPrism**, a vibrant and feature-packed marketplace for image enthusiasts. Explore an ever-growing collection of unique and diverse pictures, perfect for every creative need. Whether you're looking to buy or download stunning visuals, PicPrism offers a seamless experience that brings your projects to life with the perfect image. Dive into a world where creativity meets convenience!
 
 ## Table of Contents
 
@@ -41,8 +41,6 @@ Welcome to **PicPrism**, a dynamic and feature-rich platform designed for blogge
 - **Backend:** Node.js, Express.js
 - **Database:** MongoDB
 - **Authentication:** JWT (JSON Web Tokens)
-- **Email Service:** Mailgun
-- **Deployment:** Docker, Nginx
 - **Version Control:** Git
 
 ## Team
