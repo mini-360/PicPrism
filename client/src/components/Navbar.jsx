@@ -9,10 +9,10 @@ const Navbar = () => {
       </div>
 
       <ul className='flex gap-5 font-semibold text-lg text-gray-600'>
-        <li className='hover:text-black cursor-pointer'>About</li> 
-        <li className='hover:text-black cursor-pointer'>Contact</li>
-        <li className='hover:text-black cursor-pointer'>SignIn</li>
-        <li className='hover:text-black cursor-pointer'>SignUp</li>
+        <Link to="" className='hover:text-black cursor-pointer'>About</Link> 
+        <Link to="" className='hover:text-black cursor-pointer'>Contact</Link>
+        <Link to="login" className='hover:text-black cursor-pointer'>SignIn</Link>
+        <Link to="signup" className='hover:text-black cursor-pointer'>SignUp</Link>
       </ul>
     </nav>
   )

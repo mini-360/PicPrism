@@ -6,6 +6,7 @@ import Login from "./pages/Login";
 import Signup from "./pages/Signup";
 import BuyerDashboard from "./pages/BuyerDashboard";
 import SellerDashboard from "./pages/SellerDashboard";
+import Footers from "./components/Footers";
 
 const App = () => {
   return (
@@ -19,6 +20,7 @@ const App = () => {
           <Route path="/seller/profile" element={<SellerDashboard />} />
           <Route path="/buyer/profile" element={<BuyerDashboard />} />
         </Routes>
+        <Footers/>
       </BrowserRouter>
     </>
   );
