@@ -2,8 +2,8 @@
 
 **Video Number:**
 
-- In which day you're : DAY => 5/17
-- Your good Name : Abhay
+- In which day you're : DAY => 6/17
+- Your good Name : Abhay Raj
 
 Welcome to **PicPrism**, a dynamic and feature-rich platform designed for bloggers and readers alike. Dive into a world where ideas meet execution, and where every post creates a vibe that resonates.
 
