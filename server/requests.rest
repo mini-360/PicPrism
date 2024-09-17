@@ -1,1 +1,18 @@
-GET  http://localhost:5000/api/hello
+# GET  http://localhost:5000/api/signup
+# Content-Type: application/json
+# {
+#     "username":
+#     "email":
+#     "password":
+#     "accountType":
+# }
+
+POST   http://localhost:5000/api/signup
+Content-Type: application/json
+
+{
+    "username":"rohitsharma",
+    "email":"rohitsharma@gmail.com",
+    "password":"rohit123",
+    "accountType":"buyer"
+}
