@@ -1,16 +1,44 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import toast, { Toaster } from "react-hot-toast";
+import axios from "axios";
 
 const Signup = () => {
+const [email, setEmail] = useState("");
+const [password, setPassword] = useState("");
+const [username, setUsername] = useState("");
+const [accountType, setAccountType] = useState("buyer");
+
+
+  const handleSignup = async (e) => {
+    e.preventDefault();
+    const res = await axios.post("http://localhost:5000/api/signup", {
+      email,
+      password,
+      username,
+      accountType,
+    })
+    const data = res.data;
+    toast.success(data.message);
+    e.target.username.value = "";
+    e.target.email.value = "";
+    e.target.password.value = "";
+    e.target.accountType.value = "buyer"
+
+
+  }
+  
+  
   return (
     <>
+    <Toaster/>
       <div className="flex items-center justify-center w-full min-h-screen">
         <div className="bg-white shadow-md rounded-md px-8 py-6 w-full sm:w-[30vw]">
           <h1 className="text-2xl text-center mb-4 font-bold">
             Lets Connect !
           </h1>
 
-          <form action="">
+          <form action="" onSubmit={handleSignup}>
             <div className="mb-4">
               <label
                 htmlFor="username"
@@ -22,6 +50,8 @@ const Signup = () => {
                 type="text"
                 name="name"
                 id="name"
+                value={username}
+                onChange={(e) => setUsername(e.target.value)}
                 placeholder="Enter your username"
                 className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:border-black focus:ring-black "
               />
@@ -37,6 +67,8 @@ const Signup = () => {
                 type="email"
                 name="email"
                 id="email"
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 placeholder="Enter your email"
                 className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:border-black focus:ring-black "
               />
@@ -53,6 +85,8 @@ const Signup = () => {
                 name="password"
                 id="password"
                 placeholder="Enter your password"
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
                 className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:border-black focus:ring-black "
               />
             </div>
@@ -64,7 +98,9 @@ const Signup = () => {
                 Select Account Type
               </label>
               <select
-                name=""
+                name="accountType"
+                value={accountType}
+                onChange={(e) => setAccountType(e.target.value)}
                 id=""
                 className="shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:border-black focus:ring-black "
               >
@@ -73,7 +109,7 @@ const Signup = () => {
               </select>
             </div>
 
-            <button className="bg-black text-white shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:border-black focus:ring-black">
+            <button type="submit" className="bg-black text-white shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:border-black focus:ring-black">
               SignUp
             </button>
 
