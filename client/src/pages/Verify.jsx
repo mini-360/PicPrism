@@ -10,19 +10,13 @@ const Verify = () => {
 
   const handleVerify = async (e) => {
     e.preventDefault();
-    try {
-        const res = await axios.post("http://localhost:5000/api/verify", {
-            otp,
-            password,
-          });
-          const data = await res.data;
-          toast.success(data.message);
-          navigate("/login");
-    } catch (error) {
-        console.log(error);
-        toast.error(error.message);
-        
-    }
+    const res = await axios.post("http://localhost:5000/api/verify", {
+      otp,
+      password,
+    });
+    const data = await res.data;
+    toast.success(data.message);
+    navigate("/login");
   };
 
   return (

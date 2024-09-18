@@ -13,6 +13,10 @@ const userSchema = new Schema({
     type: String,
     required: true,
   },
+  otp: {
+    type: Number,
+    default: 0,
+  },
   accountType: {
     type: String,
     default: "buyer",

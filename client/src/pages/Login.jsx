@@ -14,15 +14,14 @@ const Login = () => {
       email,
       password,
     });
-    const data = res.data;
+    const data = await res.data;
     toast.success(data.message);
-    navigate('/')
-    
+    navigate("/");
   };
 
   return (
     <>
-    <Toaster/>
+      <Toaster />
       <div className="flex items-center justify-center w-full min-h-screen">
         <div className="bg-white shadow-md rounded-md px-8 py-6 w-full sm:w-[30vw]">
           <h1 className="text-2xl text-center mb-4 font-bold">
@@ -76,7 +75,9 @@ const Login = () => {
               >
                 Create Account
               </Link>
-              <Link to='/forgot' className="text-blue-900">Forget Password?</Link>
+              <Link to="/forgot" className="text-blue-900">
+                Forget Password?
+              </Link>
             </div>
 
             <div></div>

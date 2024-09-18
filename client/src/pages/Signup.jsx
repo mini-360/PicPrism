@@ -11,19 +11,24 @@ const [accountType, setAccountType] = useState("buyer");
 
 
   const handleSignup = async (e) => {
-    e.preventDefault();
+    try {
+      e.preventDefault();
     const res = await axios.post("http://localhost:5000/api/signup", {
       email,
       password,
       username,
       accountType,
     })
-    const data = res.data;
+    const data = await res.data;
     toast.success(data.message);
-    e.target.username.value = "";
-    e.target.email.value = "";
-    e.target.password.value = "";
-    e.target.accountType.value = "buyer"
+    e.target.email.value="";
+    e.target.password.value="";
+    e.target.username.value="";
+    e.target.accountType.value="buyer"
+      
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
 
 
   }
@@ -48,8 +53,8 @@ const [accountType, setAccountType] = useState("buyer");
               </label>
               <input
                 type="text"
-                name="name"
-                id="name"
+                name="username"
+                id="username"
                 value={username}
                 onChange={(e) => setUsername(e.target.value)}
                 placeholder="Enter your username"
