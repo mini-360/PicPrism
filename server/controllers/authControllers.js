@@ -82,12 +82,18 @@ const forgot = async (req, res) => {
         pass: "fidmnumrlsgcjfvm",
       },
     });
-
     const info = await transporter.sendMail({
       from: '"Maddison Foo👻" <aniket.singh07vs@gmail.com>',
       to: email,
       subject: "New OTP Generated",
-      html: `<b>OTP is : <i>${genrateOtp}</i></b>`,
+      html: `<p>
+        <b>Dear User,  </b>
+        
+        <p><b>${genrateOtp}</b> is your OTP. PLease do not share the OTP from the other's</p>
+        <p>Regards</p>
+        <p>Team PicPrism</p>
+        
+      </p>`,
     });
 
     if (info.messageId) {
