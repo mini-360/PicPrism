@@ -1,4 +1,4 @@
-import  { useState } from "react";
+import { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import toast, { Toaster } from "react-hot-toast";
@@ -10,13 +10,17 @@ const Login = () => {
 
   const handleLogin = async (e) => {
     e.preventDefault();
-    const res = await axios.post("http://localhost:5000/api/login", {
-      email,
-      password,
-    });
-    const data = await res.data;
-    toast.success(data.message);
-    navigate("/");
+    try {
+      const res = await axios.post("http://localhost:5000/api/login", {
+        email,
+        password,
+      });
+      const data = await res.data;
+      toast.success(data.message);
+      navigate("/");
+    } catch (error) {
+      toast.error(error.response.data.message);
+    }
   };
 
   return (
