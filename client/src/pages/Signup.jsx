@@ -1,42 +1,39 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import toast, { Toaster } from "react-hot-toast";
 import axios from "axios";
 
 const Signup = () => {
-const [email, setEmail] = useState("");
-const [password, setPassword] = useState("");
-const [username, setUsername] = useState("");
-const [accountType, setAccountType] = useState("buyer");
-
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [username, setUsername] = useState("");
+  const [accountType, setAccountType] = useState("buyer");
+  const navigate = useNavigate();
 
   const handleSignup = async (e) => {
     try {
       e.preventDefault();
-    const res = await axios.post("http://localhost:5000/api/signup", {
-      email,
-      password,
-      username,
-      accountType,
-    })
-    const data = await res.data;
-    toast.success(data.message);
-    e.target.email.value="";
-    e.target.password.value="";
-    e.target.username.value="";
-    e.target.accountType.value="buyer"
-      
+      const res = await axios.post("http://localhost:5000/api/signup", {
+        email,
+        password,
+        username,
+        accountType,
+      });
+      const data = await res.data;
+      toast.success(data.message);
+      e.target.email.value = "";
+      e.target.password.value = "";
+      e.target.username.value = "";
+      e.target.accountType.value = "buyer";
+      navigate("/login");
     } catch (error) {
       toast.error(error.response.data.message);
     }
+  };
 
-
-  }
-  
-  
   return (
     <>
-    <Toaster/>
+      <Toaster />
       <div className="flex items-center justify-center w-full min-h-screen">
         <div className="bg-white shadow-md rounded-md px-8 py-6 w-full sm:w-[30vw]">
           <h1 className="text-2xl text-center mb-4 font-bold">
@@ -114,13 +111,21 @@ const [accountType, setAccountType] = useState("buyer");
               </select>
             </div>
 
-            <button type="submit" className="bg-black text-white shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:border-black focus:ring-black">
+            <button
+              type="submit"
+              className="bg-black text-white shadow-md rounded-md w-full px-3 py-2 border-gray-300 focus:outline-none focus:border-black focus:ring-black"
+            >
               SignUp
             </button>
 
             <div className="my-3 flex gap-2 justify-end">
               <p>Already Account?</p>
-              <Link to="/login" className="text-black hover:scale-105 transition-all ease-linear duration-700 transform">LogIn</Link>
+              <Link
+                to="/login"
+                className="text-black hover:scale-105 transition-all ease-linear duration-700 transform"
+              >
+                LogIn
+              </Link>
             </div>
 
             <div></div>

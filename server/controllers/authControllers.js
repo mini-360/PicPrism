@@ -60,6 +60,8 @@ const login = async (req, res) => {
       .status(200)
       .json({ success: true, message: "User logged in successfully" });
   } catch (error) {
+    console.log(error);
+
     return res.status(500).json({ message: error.message });
   }
 };
@@ -71,17 +73,18 @@ const forgot = async (req, res) => {
   try {
     const genrateOtp = Math.floor(Math.random() * 10000);
 
+    // Looking to send emails in production? Check out our Email API/SMTP product!
     var transporter = nodemailer.createTransport({
       host: "sandbox.smtp.mailtrap.io",
       port: 2525,
       auth: {
-        user: "8ae7fec625c4c8",
-        pass: "8d6d68ffda29ae",
+        user: "873a3871401386",
+        pass: "505965e3f33bd9",
       },
     });
 
     const info = await transporter.sendMail({
-      from: "aniket.singh9322@gmail.com", // sender address
+      from: "bberlin609@gmail.com", // sender address
       to: email, // list of receivers
       subject: "New OTP Generated ✔", // Subject line
       html: `<b>OTP is : <i>${genrateOtp}</i></b>`, // html body
