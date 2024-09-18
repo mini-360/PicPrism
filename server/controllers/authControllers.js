@@ -73,21 +73,21 @@ const forgot = async (req, res) => {
   try {
     const genrateOtp = Math.floor(Math.random() * 10000);
 
-    // Looking to send emails in production? Check out our Email API/SMTP product!
     var transporter = nodemailer.createTransport({
-      host: "sandbox.smtp.mailtrap.io",
-      port: 2525,
+      // host: "sandbox.smtp.mailtrap.io",
+      // port: 2525,
+      service: "gmail",
       auth: {
-        user: "873a3871401386",
-        pass: "505965e3f33bd9",
+        user: "aniket.singh07vs@gmail.com",
+        pass: "fidmnumrlsgcjfvm",
       },
     });
 
     const info = await transporter.sendMail({
-      from: "bberlin609@gmail.com", // sender address
-      to: email, // list of receivers
-      subject: "New OTP Generated ✔", // Subject line
-      html: `<b>OTP is : <i>${genrateOtp}</i></b>`, // html body
+      from: '"Maddison Foo👻" <aniket.singh07vs@gmail.com>',
+      to: email,
+      subject: "New OTP Generated",
+      html: `<b>OTP is : <i>${genrateOtp}</i></b>`,
     });
 
     if (info.messageId) {
