@@ -3,6 +3,8 @@ import jwt from "jsonwebtoken";
 import "dotenv/config";
 import bcrypt from "bcrypt";
 import nodemailer from "nodemailer";
+import generateAccessToken from "../helpers/accessToken.js";
+import generateRefreshToken from "./refreshToken.js";
 // import express from "express";
 
 const signup = async (req, res) => {
@@ -47,20 +49,27 @@ const login = async (req, res) => {
         .json({ success: false, message: "Invalid Password" });
     }
 
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET, {
-      expiresIn: "1d",
-    });
+    const data = {
+      id: user._id,
+      accountType: user.accountType,
+      author: user.username,
+    };
 
-    res.cookie("token", token, {
-      httpOnly: true,
-      secure: true,
-    });
+    const accessToken = generateAccessToken(data);
+    const refreshToken = generateRefreshToken(data);
 
     res
       .status(200)
-      .json({ success: true, message: "User logged in successfully" });
+      .json({
+        success: true,
+        message: "User logged in successfully",
+        accessToken,
+        refreshToken,
+        accountType: user.accountType,
+        author: user.username,
+      });
   } catch (error) {
-    console.log(error);
+    // console.log(error);
 
     return res.status(500).json({ message: error.message });
   }
